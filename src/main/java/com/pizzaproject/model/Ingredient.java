@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 
 
 @Entity
-@Table(name = "ingridients")
+@Table(name = "ingredients")
 @Getter
 @Setter
-public class Ingridient {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

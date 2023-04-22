@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -15,7 +17,7 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  String id;
+    private  Long id;
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -27,7 +29,6 @@ public class Ingredient {
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
 
-    //Pizza class and "pizzas" table do not exist. Need to check after adding Pizza to model
-    //@ManyToMany(mappedBy = "pizzas")
-    //private Set<Pizza> pizzas;
+    @ManyToMany(mappedBy = "pizzas", fetch = FetchType.LAZY)
+    private Set<Pizza> pizzas = new HashSet<>();
 }

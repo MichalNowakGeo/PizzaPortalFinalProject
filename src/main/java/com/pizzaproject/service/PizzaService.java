@@ -3,6 +3,7 @@ package com.pizzaproject.service;
 import com.pizzaproject.model.Pizza;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.pizzaproject.repository.PizzaRepository;
 
 import java.util.List;
 import java.util.Optional;

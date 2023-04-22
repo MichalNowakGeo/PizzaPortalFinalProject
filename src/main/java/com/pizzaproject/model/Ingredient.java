@@ -29,6 +29,6 @@ public class Ingredient {
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
 
-    @ManyToMany(mappedBy = "pizzas", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Pizza> pizzas = new HashSet<>();
 }

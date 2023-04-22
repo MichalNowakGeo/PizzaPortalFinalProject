@@ -10,26 +10,25 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "Customer_account")
+@Table(name = "customer_account")
 public class CustomerAccount {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "users_username", nullable = false)
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
-    @OneToOne
-    @Column(name = "adress_id")
+    @OneToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Order> orders;
 
-    @OneToMany
-    private List<OrderHistory> ordersHistory;
+    //@OneToMany(fetch = FetchType.LAZY)
+    //private List<OrderHistory> ordersHistory;
 
 }

@@ -4,6 +4,7 @@ import com.pizzaproject.model.Pizza;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -11,7 +12,7 @@ import java.util.Optional;
 public class PizzaService {
 
     private final PizzaRepository pizzaRepository;
-    public Optional<Pizza> getAllPizzas() {
+    public List<Pizza> getAllPizzas() {
         return pizzaRepository.findAll();
     }
 

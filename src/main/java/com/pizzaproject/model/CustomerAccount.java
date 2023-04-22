@@ -10,17 +10,20 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "CustomerAccount")
+@Table(name = "Customer_account")
 public class CustomerAccount {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "users_username", nullable = false)
     @OneToOne
     private User user;
 
     @OneToOne
+    @Column(name = "adress_id")
     private Address address;
 
     @OneToMany

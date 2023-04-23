@@ -1,6 +1,6 @@
 package com.pizzaproject.service;
 
-import com.pizzaproject.exception.ResourceNotException;
+import com.pizzaproject.exception.ResourceNotFoundException;
 import com.pizzaproject.model.Order;
 import com.pizzaproject.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class OrderService {
 
     public Order getOrderById(Long id) {
         return orderRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotException("Not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found!"));
     }
 
     public void saveOrUpdateOrder(Order order) {

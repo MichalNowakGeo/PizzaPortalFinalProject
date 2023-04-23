@@ -20,7 +20,8 @@ public class Pizza {
 
     @Column(nullable = false)
     private String name;
-
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "pizza_ingredients",
@@ -28,6 +29,4 @@ public class Pizza {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private Set<Ingredient> ingredients = new HashSet<>();
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
 }

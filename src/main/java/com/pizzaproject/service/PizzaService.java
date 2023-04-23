@@ -13,12 +13,14 @@ import java.util.Optional;
 public class PizzaService {
 
     private final PizzaRepository pizzaRepository;
+
     public List<Pizza> getAllPizzas() {
         return pizzaRepository.findAll();
     }
 
-    public Optional<Pizza> getPizzaById(Long id) {
-        return pizzaRepository.findById(id);
+    public Pizza getPizzaById(Long id) {
+        return pizzaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pizza not found!"));
     }
 
     public Pizza savePizza(Pizza pizza) {

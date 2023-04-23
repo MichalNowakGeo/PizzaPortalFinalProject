@@ -1,31 +1,33 @@
 package com.pizzaproject.service;
 
+import com.pizzaproject.exception.ResourceNotException;
 import com.pizzaproject.model.Order;
 import com.pizzaproject.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
-    public Order getOrderById(String id) {
-        return orderRepository.findById(id).orElse(null);
+    public Order getOrderById(Long id) {
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotException("Not found!"));
     }
 
     public void saveOrUpdateOrder(Order order) {
         orderRepository.save(order);
     }
 
-    public void deleteOrder(String id) {
+    public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
 }

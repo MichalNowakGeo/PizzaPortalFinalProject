@@ -7,7 +7,7 @@ import com.pizzaproject.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-// importy do OrderStatus i CustomerAccount do uzupełnienia
+
 @Entity
 @Table(name = "orders")
 @Getter
@@ -18,10 +18,6 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_accounts_id")
-    private CustomerAccount customerAccount;
-
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
@@ -30,11 +26,10 @@ public class Order {
 
     @Column(name = "delivery_time")
     private LocalDateTime deliveryTime;
-
-    @Column(name = "comment")
     private String comment;
 
-    @Column(name = "price")
     private BigDecimal price;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_account_id", referencedColumnName = "id")
+    private CustomerAccount customerAccount;
 }
